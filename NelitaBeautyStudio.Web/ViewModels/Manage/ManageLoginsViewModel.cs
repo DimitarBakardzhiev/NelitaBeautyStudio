@@ -1,5 +1,4 @@
-﻿
-namespace NelitaBeautyStudio.Web.ViewModels.Manage
+﻿namespace NelitaBeautyStudio.Web.ViewModels.Manage
 {
     using System.Collections.Generic;
 
@@ -9,6 +8,7 @@ namespace NelitaBeautyStudio.Web.ViewModels.Manage
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
+
         public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 }
