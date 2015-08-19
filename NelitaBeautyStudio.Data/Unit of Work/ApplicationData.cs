@@ -7,13 +7,13 @@
     using NelitaBeautyStudio.Data.Repositories;
     using NelitaBeautyStudio.Models;
 
-    public class TicketSystemData : IApplicationData
+    public class ApplicationData : IApplicationData
     {
         private readonly DbContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public TicketSystemData(DbContext context)
+        public ApplicationData(DbContext context)
         {
             this.context = context;
         }
