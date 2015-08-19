@@ -15,6 +15,8 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
+        public virtual IDbSet<Contact> Contacts { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -2,8 +2,15 @@
 {
     using System.Web.Mvc;
 
-    public class HomeController : Controller
+    using NelitaBeautyStudio.Data.Unit_of_Work;
+
+    public class HomeController : BaseController
     {
+        public HomeController(IApplicationData data)
+            : base(data)
+        {
+        }
+
         public ActionResult Index()
         {
             return this.View();

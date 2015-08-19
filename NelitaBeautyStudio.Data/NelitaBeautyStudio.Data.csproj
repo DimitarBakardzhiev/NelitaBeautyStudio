@@ -59,6 +59,10 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Unit of Work\ApplicationData.cs" />
+    <Compile Include="Unit of Work\IApplicationData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NelitaBeautyStudio.Models\NelitaBeautyStudio.Models.csproj">
