@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Data.Entity;
 
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     using NelitaBeautyStudio.Data.Repositories;
     using NelitaBeautyStudio.Models;
 
@@ -21,6 +23,11 @@
         public IRepository<Contact> Contacts
         {
             get { return this.GetRepository<Contact>(); }
+        }
+
+        public IRepository<IdentityRole> Roles
+        {
+            get { return this.GetRepository<IdentityRole>(); }
         }
 
         public DbContext Context

@@ -2,6 +2,8 @@
 {
     using System.Data.Entity;
 
+    using Microsoft.AspNet.Identity.EntityFramework;
+    
     using NelitaBeautyStudio.Data.Repositories;
     using NelitaBeautyStudio.Models;
 
@@ -10,6 +12,8 @@
         DbContext Context { get; }
 
         IRepository<Contact> Contacts { get; }
+
+        IRepository<IdentityRole> Roles { get; }
 
         void Dispose();
 
