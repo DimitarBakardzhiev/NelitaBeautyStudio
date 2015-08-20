@@ -4,6 +4,8 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
+    using NelitaBeautyStudio.Web.Infrastructure.Mapping;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -12,6 +14,9 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute();
         }
     }
 }
