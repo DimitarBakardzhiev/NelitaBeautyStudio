@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NelitaBeautyStudio.Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NelitaBeautyStudio.Models", "NelitaBeautyStudio.Models\NelitaBeautyStudio.Models.csproj", "{E3A81C0B-68EC-4366-B153-21AC80B0D3D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NelitaBeautyStudio.Common", "NelitaBeautyStudio.Common\NelitaBeautyStudio.Common.csproj", "{64B1B07A-EEC6-414B-BB10-06892681F74F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E3A81C0B-68EC-4366-B153-21AC80B0D3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3A81C0B-68EC-4366-B153-21AC80B0D3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3A81C0B-68EC-4366-B153-21AC80B0D3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B1B07A-EEC6-414B-BB10-06892681F74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B1B07A-EEC6-414B-BB10-06892681F74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B1B07A-EEC6-414B-BB10-06892681F74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B1B07A-EEC6-414B-BB10-06892681F74F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

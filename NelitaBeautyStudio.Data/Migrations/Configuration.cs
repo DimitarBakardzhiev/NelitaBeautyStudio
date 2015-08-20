@@ -4,6 +4,7 @@ namespace NelitaBeautyStudio.Data.Migrations
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
+    using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
@@ -37,7 +38,7 @@ namespace NelitaBeautyStudio.Data.Migrations
 
             context.Roles.AddOrUpdate(
                 r => r.Name,
-                new IdentityRole { Name = "Admin" });
+                new IdentityRole { Name = GlobalConstants.AdminRole });
         }
     }
 }

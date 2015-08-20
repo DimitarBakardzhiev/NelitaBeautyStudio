@@ -65,6 +65,10 @@
     <Compile Include="Unit of Work\IApplicationData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NelitaBeautyStudio.Common\NelitaBeautyStudio.Common.csproj">
+      <Project>{64b1b07a-eec6-414b-bb10-06892681f74f}</Project>
+      <Name>NelitaBeautyStudio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NelitaBeautyStudio.Models\NelitaBeautyStudio.Models.csproj">
       <Project>{e3a81c0b-68ec-4366-b153-21ac80b0d3d8}</Project>
       <Name>NelitaBeautyStudio.Models</Name>
