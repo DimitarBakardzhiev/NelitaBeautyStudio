@@ -1,0 +1,29 @@
+﻿@using NelitaBeautyStudio.Web.ViewModels
+@model ContactViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Нов контакт</h2>
+
+@using (Html.BeginForm("Create", "Contacts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(c => c.Type, new { @class = "col-lg-2 control-label" })
+        @Html.EditorFor(c => c.Type)
+        @Html.ValidationMessageFor(c => c.Type, null, new { @class = "alert-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Value, new { @class = "col-lg-2 control-label" })
+        @Html.EditorFor(c => c.Value)
+        @Html.ValidationMessageFor(c => c.Value, null, new { @class = "alert-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Priority, new { @class = "col-lg-2 control-label" })
+        @Html.EnumDropDownListFor(c => c.Priority, new { @class = "form-control" })
+    </div>
+    
+    <input type="submit" value="Добави" class="btn btn-primary" />
+}

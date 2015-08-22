@@ -193,6 +193,7 @@
     <Compile Include="Infrastructure\Mapping\AutoMapperConfig.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
+    <Compile Include="Infrastructure\Mapping\InitializeAutoMapper.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -271,6 +272,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +287,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NelitaBeautyStudio.Common\NelitaBeautyStudio.Common.csproj">
+      <Project>{64b1b07a-eec6-414b-bb10-06892681f74f}</Project>
+      <Name>NelitaBeautyStudio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NelitaBeautyStudio.Data\NelitaBeautyStudio.Data.csproj">
       <Project>{776f7b55-34e9-4fe2-a283-c4ed8beadb39}</Project>
       <Name>NelitaBeautyStudio.Data</Name>

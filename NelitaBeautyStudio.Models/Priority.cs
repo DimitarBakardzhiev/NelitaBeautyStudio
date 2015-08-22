@@ -1,9 +1,17 @@
 ﻿namespace NelitaBeautyStudio.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public enum Priority
     {
-        Low = 0,
-        Normal = 1,
+        [Display(Name = "Нисък")]
+        Low = 1,
+
+        // The value is set to zero to appear as a default value in dropdownlists
+        [Display(Name = "Нормален")]
+        Normal = 0,
+
+        [Display(Name = "Висок")]
         High = 2
     }
 }

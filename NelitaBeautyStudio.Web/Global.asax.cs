@@ -17,6 +17,7 @@
 
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute();
+            InitializeAutoMapper.Initialize();
         }
     }
 }
