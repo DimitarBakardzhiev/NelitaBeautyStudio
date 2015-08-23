@@ -6,10 +6,12 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
+    using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
     using NelitaBeautyStudio.Models;
     using NelitaBeautyStudio.Web.ViewModels;
 
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public class ContactsController : BaseController
     {
         public ContactsController(IApplicationData data)
@@ -17,6 +19,7 @@
         {
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var contacts = this.Data.Contacts.All()

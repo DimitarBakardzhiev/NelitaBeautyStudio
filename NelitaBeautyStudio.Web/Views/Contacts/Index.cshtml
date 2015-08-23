@@ -25,7 +25,7 @@ else
                     @if (User.IsInRole(GlobalConstants.AdminRole))
 	                {
 		                <td><a href="Contacts/Edit/@contact.Id" class="btn btn-warning btn-xs">Редактиране</a></td>
-                        <td>@*<a href="Contacts/Delete/@contact.Id" class="btn btn-danger btn-xs" onclick="confirmDelete()">Изтриване</a>*@
+                        <td>
                             @using (Html.BeginForm("Delete", "Contacts", new { id = contact.Id }, FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
@@ -38,7 +38,7 @@ else
             }
         </tbody>
     </table>
-    <a href="Contacts/Create" class="btn btn-primary">Добавяне</a>
+    <a href="Create" class="btn btn-primary">Добавяне</a>
     
     if (User.IsInRole(GlobalConstants.AdminRole))
     {

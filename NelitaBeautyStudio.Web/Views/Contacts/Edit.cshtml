@@ -26,5 +26,9 @@
         @Html.EnumDropDownListFor(c => c.Priority, new { @class = "form-control" })
     </div>
 
-    <input type="submit" value="Добави" class="btn btn-primary" />
+    <input type="submit" value="Редактирай" class="btn btn-warning" />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
