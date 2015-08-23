@@ -1,0 +1,64 @@
+﻿@using NelitaBeautyStudio.Web.ViewModels
+
+@model ManageUserRolesViewModel
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Роли на потребителите</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Потребител</th>
+            <th>Администратор</th>
+            <th>Повишаване / Понижаване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                @{
+                    var isAdmin = user.Roles.FirstOrDefault(
+                        r => r.RoleId == Model.AdminRole.Id && r.UserId == user.Id) != null;
+                }
+
+                <td>
+                    @if (isAdmin)
+                    {
+                        <span>Да</span>
+                    }
+                    else
+                    {
+                        <span>Не</span>
+                    }
+                </td>
+                <td>
+                    @if (!isAdmin)
+                    {
+                        using (Html.BeginForm("Promote", "Roles", new { id = user.Id }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Повиши" class="btn btn-success" onclick="confirmDelete()" />
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Demote", "Roles", new { id = user.Id }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Понижи" class="btn btn-danger" onclick="confirmDelete()" />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/Scripts/confirmDelete.js"></script>

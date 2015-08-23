@@ -24,7 +24,7 @@ else
 
                     @if (User.IsInRole(GlobalConstants.AdminRole))
 	                {
-		                <td><a href="Contacts/Edit/@contact.Id" class="btn btn-warning btn-xs">Редактиране</a></td>
+		                <td>@Html.ActionLink("Редактиране", "Edit", new { id = contact.Id }, new { @class = "btn btn-warning btn-xs" })</td>
                         <td>
                             @using (Html.BeginForm("Delete", "Contacts", new { id = contact.Id }, FormMethod.Post))
                             {
@@ -38,7 +38,7 @@ else
             }
         </tbody>
     </table>
-    <a href="Create" class="btn btn-primary">Добавяне</a>
+    @Html.ActionLink("Добавяне", "Create", null, new { @class = "btn btn-primary" })
     
     if (User.IsInRole(GlobalConstants.AdminRole))
     {

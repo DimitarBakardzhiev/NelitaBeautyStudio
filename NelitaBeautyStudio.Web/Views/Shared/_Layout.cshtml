@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using NelitaBeautyStudio.Common
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,6 +25,12 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Контакти", "Index", "Contacts")</li>
+
+                    @if (User.IsInRole(GlobalConstants.AdminRole))
+                    {
+                        <li>@Html.ActionLink("Управление на администраторите", "Manage", "Roles")</li>
+                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -30,6 +30,16 @@
             get { return this.GetRepository<IdentityRole>(); }
         }
 
+        public IRepository<IdentityUserRole> UserRoles
+        {
+            get { return this.GetRepository<IdentityUserRole>(); }
+        }
+
+        public IRepository<User> Users
+        {
+            get { return this.GetRepository<User>(); }
+        }
+
         public DbContext Context
         {
             get
