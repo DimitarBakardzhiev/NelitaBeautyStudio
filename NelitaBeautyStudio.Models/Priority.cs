@@ -5,11 +5,11 @@
     public enum Priority
     {
         [Display(Name = "Нисък")]
-        Low = 1,
+        Low = 0,
 
         // The value is set to zero to appear as a default value in dropdownlists
         [Display(Name = "Нормален")]
-        Normal = 0,
+        Normal = 1,
 
         [Display(Name = "Висок")]
         High = 2

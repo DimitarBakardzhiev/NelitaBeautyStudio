@@ -1,5 +1,6 @@
-﻿@using NelitaBeautyStudio.Web.ViewModels
-@model IEnumerable<ContactViewModel>
+﻿@using NelitaBeautyStudio.Models
+@using NelitaBeautyStudio.Common
+@model IEnumerable<Contact>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,8 +21,27 @@ else
                 <tr>
                     <td>@contact.Type</td>
                     <td>@contact.Value</td>
+
+                    @if (User.IsInRole(GlobalConstants.AdminRole))
+	                {
+		                <td><a href="Contacts/Edit/@contact.Id" class="btn btn-warning btn-xs">Редактиране</a></td>
+                        <td>@*<a href="Contacts/Delete/@contact.Id" class="btn btn-danger btn-xs" onclick="confirmDelete()">Изтриване</a>*@
+                            @using (Html.BeginForm("Delete", "Contacts", new { id = contact.Id }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                
+                                <input type="submit" value="Изтриване" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+                            }
+                        </td>
+	                }
                 </tr>
             }
         </tbody>
     </table>
+    <a href="Contacts/Create" class="btn btn-primary">Добавяне</a>
+    
+    if (User.IsInRole(GlobalConstants.AdminRole))
+    {
+        <script src="~/Scripts/confirmDelete.js"></script>
+    }
 }
