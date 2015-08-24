@@ -3,3 +3,9 @@
         event.preventDefault();
     }
 }
+
+function confirmPromoteDemote() {
+    if (!confirm('Наистина ли искате да промените ролята на този потребител?')) {
+        event.preventDefault();
+    }
+}

@@ -43,7 +43,7 @@
                         {
                             @Html.AntiForgeryToken()
 
-                            <input type="submit" value="Повиши" class="btn btn-success" onclick="confirmDelete()" />
+                            <input type="submit" value="Повиши" class="btn btn-success btn-xs" onclick="confirmPromoteDemote()" />
                         }
                     }
                     else
@@ -52,7 +52,7 @@
                         {
                             @Html.AntiForgeryToken()
 
-                            <input type="submit" value="Понижи" class="btn btn-danger" onclick="confirmDelete()" />
+                            <input type="submit" value="Понижи" class="btn btn-danger btn-xs" onclick="confirmPromoteDemote()" />
                         }
                     }
                 </td>
