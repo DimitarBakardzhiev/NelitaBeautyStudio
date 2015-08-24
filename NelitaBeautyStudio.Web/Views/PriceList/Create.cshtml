@@ -1,0 +1,25 @@
+﻿@using NelitaBeautyStudio.Web.ViewModels
+@model PriceListViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Нов ценоразпис</h2>
+
+@using (Html.BeginForm("Create", "PriceList", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Title, new { @class = "col-lg-2 control-label" })
+        @Html.EditorFor(p => p.Title)
+        @Html.ValidationMessageFor(p => p.Title, null, new { @class = "alert-danger" })
+
+        <input type="submit" value="Добави" class="btn btn-primary">
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

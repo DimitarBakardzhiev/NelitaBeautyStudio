@@ -16,12 +16,15 @@
         private static void CreateModelsToViewModels()
         {
             Mapper.CreateMap<Contact, ContactViewModel>();
+            Mapper.CreateMap<PriceList, PriceListViewModel>();
         }
 
         private static void CreateViewModelsToModels()
         {
             Mapper.CreateMap<ContactViewModel, Contact>()
                 .ForMember(c => c.Id, option => option.Ignore());
+            Mapper.CreateMap<PriceListViewModel, PriceList>()
+                .ForMember(p => p.Id, option => option.Ignore());
         }
     }
 }

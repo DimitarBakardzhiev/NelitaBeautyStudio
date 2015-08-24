@@ -1,0 +1,50 @@
+﻿@using NelitaBeautyStudio.Models
+@model IEnumerable<PriceList>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jqueryui
+{
+    <link rel="stylesheet" href="~/Content/jquery-ui.min.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+}
+
+<h2>Ценоразписи</h2>
+
+@if (Model.Count() == 0)
+{
+    <h3>Няма въведени ценоразписи!</h3>
+}
+else
+{
+    <div id="accordion">
+        @foreach (var priceList in Model)
+	    {
+		    <h3>@priceList.Title</h3>
+            <div>
+                <p>
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            @foreach (var service in priceList.Services)
+                            {
+                                <tr>
+                                    <td>@service.Type</td>
+                                    <td>@service.Price</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+        }
+    </div>
+
+    <script>
+        $("#accordion").accordion();
+    </script>
+}
+
+@Html.ActionLink("Нов ценоразпис", "Create", null, new { @class = "btn btn-primary" })

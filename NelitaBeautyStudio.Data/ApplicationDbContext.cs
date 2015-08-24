@@ -17,6 +17,10 @@
 
         public virtual IDbSet<Contact> Contacts { get; set; }
 
+        public virtual IDbSet<PriceList> PriceLists { get; set; }
+
+        public virtual IDbSet<Service> Services { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

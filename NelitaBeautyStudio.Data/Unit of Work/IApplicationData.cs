@@ -19,6 +19,10 @@
 
         IRepository<User> Users { get; }
 
+        IRepository<PriceList> PriceLists { get; }
+
+        IRepository<Service> Services { get; }
+
         void Dispose();
 
         int SaveChanges();

@@ -40,6 +40,16 @@
             get { return this.GetRepository<User>(); }
         }
 
+        public IRepository<PriceList> PriceLists
+        {
+            get { return this.GetRepository<PriceList>(); }
+        }
+
+        public IRepository<Service> Services
+        {
+            get { return this.GetRepository<Service>(); }
+        }
+
         public DbContext Context
         {
             get
