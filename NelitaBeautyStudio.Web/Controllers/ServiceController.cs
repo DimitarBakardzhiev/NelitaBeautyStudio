@@ -1,5 +1,6 @@
 ﻿namespace NelitaBeautyStudio.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -14,18 +15,23 @@
         {
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string priceListTitle)
         {
+            this.ViewData["priceList"] = priceListTitle;
+
             return this.View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ServiceViewModel service)
+        public ActionResult Create(ServiceViewModel service, string priceListTitle)
         {
             if (ModelState.IsValid)
             {
                 var serviceModel = Mapper.Map<NelitaBeautyStudio.Models.Service>(service);
+                var priceList = this.Data.PriceLists.All().FirstOrDefault(p => p.Title == priceListTitle);
+
+                serviceModel.PriceList = priceList;
 
                 this.Data.Services.Add(serviceModel);
                 this.Data.SaveChanges();
@@ -50,8 +56,9 @@
         {
             if (ModelState.IsValid)
             {
-                var serviceModel = Mapper.Map<NelitaBeautyStudio.Models.Service>(service);
-                serviceModel.Id = id;
+                var serviceModel = this.Data.Services.GetById(id);
+                serviceModel.Type = service.Type;
+                serviceModel.Price = service.Price;
 
                 this.Data.Services.Update(serviceModel);
                 this.Data.SaveChanges();

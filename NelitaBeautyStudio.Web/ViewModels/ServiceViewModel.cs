@@ -17,6 +17,6 @@
         [Display(Name = "Цена")]
         [Required(ErrorMessage = "Полето {0} е задължително")]
         [Range(GlobalConstants.PriceMinimum, GlobalConstants.PriceMaximum, ErrorMessage = "Полето {0} трябва да бъде между {1} и {2} лева!")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 ﻿@using NelitaBeautyStudio.Web.ViewModels
 @model ServiceViewModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Нова услуга за @ViewData["priceList"]</h2>
+<h2>Редактиране на услуга</h2>
 
-@using (Html.BeginForm("Create", "Service", new { priceListTitle = ViewData["priceList"] }, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Edit", "Service", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -22,9 +22,9 @@
         @Html.EditorFor(s => s.Price)
         @Html.ValidationMessageFor(s => s.Price, null, new { @class = "alert-danger" })
     </div>
-    
-    <input type="submit" value="Добави" class="btn btn-primary">
-    
+
+    <input type="submit" value="Редактирай" class="btn btn-warning">
+
 }
 
 @section Scripts {

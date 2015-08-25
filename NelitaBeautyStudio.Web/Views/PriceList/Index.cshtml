@@ -27,29 +27,41 @@ else
 		    <h3>@priceList.Title</h3>
             <div>
                 <p>
-                    @if (User.IsInRole(GlobalConstants.AdminRole))
-                    {
-                        @Html.ActionLink("Смени заглавието", "Edit", "PriceList", new { id = priceList.Id }, new { @class = "btn btn-warning" })
-
-                        using (Html.BeginForm("Delete", "PriceList", new { id = priceList.Id }))
-                        {
-                            @Html.AntiForgeryToken()
-
-                            <input type="submit" value="Изтриване на целия ценоразпис" class="btn btn-danger" onclick="confirmDelete()" />
-                        }
-                    }
-                    
                     <table class="table table-striped table-hover">
                         <tbody>
                             @foreach (var service in priceList.Services)
                             {
                                 <tr>
                                     <td>@service.Type</td>
-                                    <td>@service.Price</td>
+                                    <td>@service.Price лв.</td>
+                                    @if (User.IsInRole(GlobalConstants.AdminRole))
+	                                {
+		                                <td>@Html.ActionLink("Редактиране", "Edit", "Service", new { id = service.Id }, new { @class = "btn btn-warning btn-xs" })</td>
+                                        <td>
+                                            @using (Html.BeginForm("Delete", "Service", new { id = service.Id }, FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                
+                                                <input type="submit" value="Изтриване" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+                                            }
+                                        </td>
+                                    }
                                 </tr>
                             }
                         </tbody>
                     </table>
+
+                    @if (User.IsInRole(GlobalConstants.AdminRole))
+                    {                    
+                        @Html.ActionLink("Добави нова услуга", "Create", "Service", new { priceListTitle = priceList.Title }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Смени заглавието на ценоразписа", "Edit", "PriceList", new { id = priceList.Id }, new { @class = "btn btn-warning" });
+                        using (Html.BeginForm("Delete", "PriceList", new { id = priceList.Id }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <input type="submit" value="Изтриване на целия ценоразпис" class="btn btn-danger" onclick="confirmDelete()" />
+                        }
+                    }
                 </p>
             </div>
         }
@@ -61,4 +73,7 @@ else
     </script>
 }
 
-@Html.ActionLink("Нов ценоразпис", "Create", null, new { @class = "btn btn-primary" })
+@if (User.IsInRole(GlobalConstants.AdminRole))
+{
+    @Html.ActionLink("Нов ценоразпис", "Create", null, new { @class = "btn btn-primary" })
+}

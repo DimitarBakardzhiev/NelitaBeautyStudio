@@ -302,6 +302,8 @@
     <Content Include="Views\PriceList\Index.cshtml" />
     <Content Include="Views\PriceList\Edit.cshtml" />
     <Content Include="Views\Service\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
