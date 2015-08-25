@@ -23,7 +23,7 @@
         {
             var priceLists = this.Data.PriceLists.All().ToList();
 
-            return View(priceLists);
+            return this.View(priceLists);
         }
 
         public ActionResult Create()

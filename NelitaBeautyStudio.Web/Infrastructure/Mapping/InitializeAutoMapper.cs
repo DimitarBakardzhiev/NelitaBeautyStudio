@@ -17,6 +17,7 @@
         {
             Mapper.CreateMap<Contact, ContactViewModel>();
             Mapper.CreateMap<PriceList, PriceListViewModel>();
+            Mapper.CreateMap<Service, ServiceViewModel>();
         }
 
         private static void CreateViewModelsToModels()
@@ -25,6 +26,10 @@
                 .ForMember(c => c.Id, option => option.Ignore());
             Mapper.CreateMap<PriceListViewModel, PriceList>()
                 .ForMember(p => p.Id, option => option.Ignore());
+            Mapper.CreateMap<ServiceViewModel, Service>()
+                .ForMember(s => s.Id, option => option.Ignore())
+                .ForMember(s => s.PriceListId, option => option.Ignore())
+                .ForMember(s => s.PriceList, option => option.Ignore());
         }
     }
 }

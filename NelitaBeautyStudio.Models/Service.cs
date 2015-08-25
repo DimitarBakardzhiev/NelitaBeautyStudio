@@ -11,7 +11,7 @@
         public string Type { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         public int PriceListId { get; set; }
 
