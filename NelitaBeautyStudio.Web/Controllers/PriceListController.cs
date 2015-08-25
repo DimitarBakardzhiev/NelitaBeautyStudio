@@ -51,8 +51,9 @@
         public ActionResult Edit(int id)
         {
             var priceList = this.Data.PriceLists.GetById(id);
+            var priceListViewModel = Mapper.Map<PriceListViewModel>(priceList);
 
-            return this.View(priceList);
+            return this.View(priceListViewModel);
         }
 
         [HttpPost]
