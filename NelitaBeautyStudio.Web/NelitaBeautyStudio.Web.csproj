@@ -185,6 +185,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PriceListController.cs" />
@@ -304,6 +305,7 @@
     <Content Include="Views\Service\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
