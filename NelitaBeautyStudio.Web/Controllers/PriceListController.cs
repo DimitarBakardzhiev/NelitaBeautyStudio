@@ -26,6 +26,23 @@
             return this.View(priceLists);
         }
 
+        [ChildActionOnly]
+        [AllowAnonymous]
+        public ActionResult PriceListDropDown()
+        {
+            var priceLists = this.Data.PriceLists.All().ToList();
+
+            return this.PartialView(priceLists);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Details(int id)
+        {
+            var priceList = this.Data.PriceLists.GetById(id);
+
+            return this.View(priceList);
+        }
+
         public ActionResult Create()
         {
             return this.View();

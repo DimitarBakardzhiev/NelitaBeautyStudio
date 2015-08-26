@@ -306,6 +306,8 @@
     <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\PriceList\PriceListDropDown.cshtml" />
+    <Content Include="Views\PriceList\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

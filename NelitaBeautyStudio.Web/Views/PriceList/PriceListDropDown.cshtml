@@ -1,0 +1,17 @@
+﻿@using NelitaBeautyStudio.Models
+@using NelitaBeautyStudio.Common
+
+@model IEnumerable<PriceList>
+
+<ul class="dropdown-menu" role="menu">
+    @foreach (var priceList in Model)
+    {
+        <li>@Html.ActionLink(priceList.Title, "Details", "PriceList", new { id = priceList.Id }, null)</li>
+    }
+
+    @if (User.IsInRole(GlobalConstants.AdminRole))
+    {
+        <li class="divider"></li>
+        <li>@Html.ActionLink("Нов ценоразпис", "Create", "PriceList")</li>
+    }
+</ul>
