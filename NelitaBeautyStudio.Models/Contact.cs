@@ -1,5 +1,6 @@
 ﻿namespace NelitaBeautyStudio.Models
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public class Contact
@@ -14,6 +15,7 @@
         public string Value { get; set; }
 
         [Required]
+        [DefaultValue(Priority.Normal)]
         public Priority Priority { get; set; }
     }
 }

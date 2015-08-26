@@ -1,9 +1,11 @@
 namespace NelitaBeautyStudio.Data.Migrations
 {
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
+    using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
+    
     using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Models;
 
@@ -39,6 +41,18 @@ namespace NelitaBeautyStudio.Data.Migrations
             context.Roles.AddOrUpdate(
                 r => r.Name,
                 new IdentityRole { Name = GlobalConstants.AdminRole });
+
+            if (context.Users.FirstOrDefault(u => u.Email == "admin@admin.com") == null)
+            {
+                var store = new UserStore<User>(context);
+                var manager = new UserManager<User>(store);
+
+                manager.Create(new User() { Email = "admin@admin.com", UserName = "admin@admin.com" }, "123456");
+
+                var admin = context.Users.FirstOrDefault(u => u.Email == "admin@admin.com");
+
+                manager.AddToRole(admin.Id, GlobalConstants.AdminRole);
+            }
         }
     }
 }

@@ -7,7 +7,6 @@
         [Display(Name = "Нисък")]
         Low = 0,
 
-        // The value is set to zero to appear as a default value in dropdownlists
         [Display(Name = "Нормален")]
         Normal = 1,
 

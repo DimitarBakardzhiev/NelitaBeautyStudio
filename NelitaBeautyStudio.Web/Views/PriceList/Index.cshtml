@@ -52,15 +52,23 @@ else
                     </table>
 
                     @if (User.IsInRole(GlobalConstants.AdminRole))
-                    {                    
-                        @Html.ActionLink("Добави нова услуга", "Create", "Service", new { priceListTitle = priceList.Title }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Смени заглавието на ценоразписа", "Edit", "PriceList", new { id = priceList.Id }, new { @class = "btn btn-warning" });
-                        using (Html.BeginForm("Delete", "PriceList", new { id = priceList.Id }, FormMethod.Post))
-                        {
-                            @Html.AntiForgeryToken()
+                    {
+                        <ul>
+                            <li>
+                                @Html.ActionLink("Добави нова услуга", "Create", "Service", new { priceListTitle = priceList.Title }, new { @class = "btn btn-primary btn-xs" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Смени заглавието на ценоразписа", "Edit", "PriceList", new { id = priceList.Id }, new { @class = "btn btn-warning btn-xs" })
+                            </li>
+                            <li>
+                                @using (Html.BeginForm("Delete", "PriceList", new { id = priceList.Id }, FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
 
-                            <input type="submit" value="Изтриване на целия ценоразпис" class="btn btn-danger" onclick="confirmDelete()" />
-                        }
+                                    <input type="submit" value="Изтриване на целия ценоразпис" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+                                }
+                            </li>
+                        </ul>
                     }
                 </p>
             </div>
