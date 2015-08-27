@@ -18,14 +18,6 @@
         {
         }
 
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            var priceLists = this.Data.PriceLists.All().ToList();
-
-            return this.View(priceLists);
-        }
-
         [ChildActionOnly]
         [AllowAnonymous]
         public ActionResult PriceListDropDown()
@@ -52,6 +44,15 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(PriceListViewModel priceList)
         {
+            var titleAlreadyExists = this.Data.PriceLists.All().FirstOrDefault(p => p.Title == priceList.Title) != null;
+
+            if (titleAlreadyExists)
+            {
+                ModelState.AddModelError("Title", "Не може да се добави втори ценоразпис с това име!");
+
+                return this.View(priceList);
+            }
+
             if (ModelState.IsValid)
             {
                 var priceListModel = Mapper.Map<PriceList>(priceList);
@@ -59,7 +60,7 @@
                 this.Data.PriceLists.Add(priceListModel);
                 this.Data.SaveChanges();
 
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction("Details", new { id = priceListModel.Id });
             }
 
             return this.View(priceList);
@@ -85,10 +86,20 @@
                 this.Data.PriceLists.Update(priceListModel);
                 this.Data.SaveChanges();
 
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction("Details", new { id = priceListModel.Id });
             }
 
             return this.View(priceList);
+        }
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            var priceList = this.Data.PriceLists.GetById(id);
+            var priceListViewModel = Mapper.Map<PriceListViewModel>(priceList);
+
+            return this.View(priceListViewModel);
         }
 
         [HttpPost]
@@ -100,7 +111,7 @@
             this.Data.PriceLists.Delete(priceList);
             this.Data.SaveChanges();
 
-            return this.RedirectToAction("Index");
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

@@ -15,9 +15,10 @@
         @Html.LabelFor(p => p.Title, new { @class = "col-lg-2 control-label" })
         @Html.EditorFor(p => p.Title)
         @Html.ValidationMessageFor(p => p.Title, null, new { @class = "alert-danger" })
-
-        <input type="submit" value="Редактирай" class="btn btn-warning">
     </div>
+    
+    <input type="submit" value="Редактирай" class="btn btn-warning">
+    
 }
 
 @section Scripts {

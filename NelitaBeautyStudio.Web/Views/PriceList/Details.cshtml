@@ -32,3 +32,20 @@
         }
     </tbody>
 </table>
+
+@if (User.IsInRole(GlobalConstants.AdminRole))
+{
+    <div class="btn-group">
+        <a href="#" class="btn btn-default">Опции</a>
+        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Добави нова услуга", "Create", "Service", new { priceListTitle = Model.Title }, null)</li>
+            <li>@Html.ActionLink("Смени заглавието на ценоразписа", "Edit", "PriceList", new { id = Model.Id }, null)</li>
+            <li>@Html.ActionLink("Изтрий целия ценоразпис", "Delete", "PriceList", new { id = Model.Id }, null)</li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <script src="~/Scripts/confirmDelete.js"></script>
+}

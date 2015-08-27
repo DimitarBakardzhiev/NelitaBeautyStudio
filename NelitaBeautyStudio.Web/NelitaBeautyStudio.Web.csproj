@@ -225,7 +225,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,8 +250,6 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -300,7 +297,6 @@
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Roles\Manage.cshtml" />
     <Content Include="Views\PriceList\Create.cshtml" />
-    <Content Include="Views\PriceList\Index.cshtml" />
     <Content Include="Views\PriceList\Edit.cshtml" />
     <Content Include="Views\Service\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
@@ -308,6 +304,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\PriceList\PriceListDropDown.cshtml" />
     <Content Include="Views\PriceList\Details.cshtml" />
+    <Content Include="Views\PriceList\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

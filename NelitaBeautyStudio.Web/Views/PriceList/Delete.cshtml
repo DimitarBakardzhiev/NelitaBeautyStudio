@@ -1,0 +1,15 @@
+﻿@using NelitaBeautyStudio.Web.ViewModels
+@model PriceListViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изтриване</h2>
+<h3>Наистина ли искате да изтриете ценоразпис @Model.Title и всички услуги записани в него?</h3>
+@using (Html.BeginForm("Delete", "PriceList", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="submit" value="Изтриване" class="btn btn-danger" />
+}
