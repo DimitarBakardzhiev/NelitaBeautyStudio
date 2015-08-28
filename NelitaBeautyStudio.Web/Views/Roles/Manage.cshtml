@@ -62,3 +62,17 @@
 </table>
 
 <script src="~/Scripts/confirmDelete.js"></script>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/toastr")
+
+<script>
+    $(document).ready(function () {
+        var message = '@(TempData["message"])'
+
+        if (message) {
+            toastr['@(TempData["type"])'](message)
+        }
+        else { }
+    });
+</script>

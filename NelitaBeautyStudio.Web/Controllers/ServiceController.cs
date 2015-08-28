@@ -4,8 +4,10 @@
     using System.Web.Mvc;
 
     using AutoMapper;
-
+    
+    using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
+    using NelitaBeautyStudio.Web.Infrastructure;
     using NelitaBeautyStudio.Web.ViewModels;
 
     public class ServiceController : BaseController
@@ -36,7 +38,9 @@
                 this.Data.Services.Add(serviceModel);
                 this.Data.SaveChanges();
 
-                return this.RedirectToAction("Index", "PriceList");
+                this.Notify(GlobalConstants.AddService, NotificationType.success);
+
+                return this.RedirectToAction("Details", "PriceList", new { id = priceList.Id });
             }
 
             return this.View(service);
@@ -63,7 +67,9 @@
                 this.Data.Services.Update(serviceModel);
                 this.Data.SaveChanges();
 
-                return this.RedirectToAction("Index", "PriceList");
+                this.Notify(GlobalConstants.EditService, NotificationType.success);
+
+                return this.RedirectToAction("Details", "PriceList", new { id = serviceModel.PriceList.Id });
             }
 
             return this.View(service);
@@ -74,11 +80,14 @@
         public ActionResult Delete(int id)
         {
             var service = this.Data.Services.GetById(id);
+            var priceListId = service.PriceList.Id;
 
             this.Data.Services.Delete(service);
             this.Data.SaveChanges();
 
-            return this.RedirectToAction("Index", "PriceList");
+            this.Notify(GlobalConstants.DeleteService, NotificationType.info);
+
+            return this.RedirectToAction("Details", "PriceList", new { id = priceListId });
         }
     }
 }

@@ -8,6 +8,7 @@
     using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
     using NelitaBeautyStudio.Models;
+    using NelitaBeautyStudio.Web.Infrastructure;
     using NelitaBeautyStudio.Web.ViewModels;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
@@ -60,6 +61,8 @@
                 this.Data.PriceLists.Add(priceListModel);
                 this.Data.SaveChanges();
 
+                this.Notify(GlobalConstants.AddPriceList, NotificationType.success);
+
                 return this.RedirectToAction("Details", new { id = priceListModel.Id });
             }
 
@@ -78,6 +81,15 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PriceListViewModel priceList)
         {
+            var titleAlreadyExists = this.Data.PriceLists.All().FirstOrDefault(p => p.Title == priceList.Title) != null;
+
+            if (titleAlreadyExists)
+            {
+                ModelState.AddModelError("Title", "Не може да се добави втори ценоразпис с това име!");
+
+                return this.View(priceList);
+            }
+
             if (ModelState.IsValid)
             {
                 var priceListModel = Mapper.Map<PriceList>(priceList);
@@ -85,6 +97,8 @@
 
                 this.Data.PriceLists.Update(priceListModel);
                 this.Data.SaveChanges();
+
+                this.Notify(GlobalConstants.EditPriceList, NotificationType.success);
 
                 return this.RedirectToAction("Details", new { id = priceListModel.Id });
             }
@@ -110,6 +124,8 @@
 
             this.Data.PriceLists.Delete(priceList);
             this.Data.SaveChanges();
+
+            this.Notify(GlobalConstants.DeletePriceList, NotificationType.warning);
 
             return this.RedirectToAction("Index", "Home");
         }

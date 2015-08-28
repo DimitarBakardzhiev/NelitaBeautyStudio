@@ -4,11 +4,11 @@
     using System.Web.Mvc;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
 
     using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
     using NelitaBeautyStudio.Models;
+    using NelitaBeautyStudio.Web.Infrastructure;
     using NelitaBeautyStudio.Web.ViewModels;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
@@ -45,6 +45,8 @@
                 this.Data.Contacts.Add(contactEntity);
                 this.Data.SaveChanges();
 
+                this.Notify(GlobalConstants.AddContact, NotificationType.success);
+
                 return this.RedirectToAction("Index");
             }
 
@@ -70,6 +72,8 @@
                 this.Data.Contacts.Update(updatedContact);
                 this.Data.SaveChanges();
 
+                this.Notify(GlobalConstants.EditContact, NotificationType.success);
+
                 return this.RedirectToAction("Index");
             }
 
@@ -84,6 +88,8 @@
 
             this.Data.Contacts.Delete(contact);
             this.Data.SaveChanges();
+
+            this.Notify(GlobalConstants.DeleteContact, NotificationType.info);
 
             return this.RedirectToAction("Index");
         }

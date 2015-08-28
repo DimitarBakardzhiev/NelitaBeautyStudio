@@ -29,3 +29,17 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/toastr")
+
+<script>
+    $(document).ready(function () {
+        var message = '@(TempData["message"])'
+
+        if (message) {
+            toastr['@(TempData["type"])'](message)
+        }
+        else { }
+    });
+</script>

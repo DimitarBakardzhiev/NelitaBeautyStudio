@@ -9,6 +9,7 @@
     using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
     using NelitaBeautyStudio.Models;
+    using NelitaBeautyStudio.Web.Infrastructure;
     using NelitaBeautyStudio.Web.ViewModels;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
@@ -39,6 +40,8 @@
 
             manager.AddToRoleAsync(id, GlobalConstants.AdminRole);
 
+            this.Notify(GlobalConstants.PromoteUser, NotificationType.success);
+
             return this.RedirectToAction("Manage");
         }
 
@@ -55,6 +58,12 @@
                 var manager = new UserManager<User>(store);
 
                 manager.RemoveFromRoleAsync(id, GlobalConstants.AdminRole);
+
+                this.Notify(GlobalConstants.DemoteUserSuccess, NotificationType.success);
+            }
+            else
+            {
+                this.Notify(GlobalConstants.DemoteUserFail, NotificationType.error);
             }
 
             return this.RedirectToAction("Manage");
