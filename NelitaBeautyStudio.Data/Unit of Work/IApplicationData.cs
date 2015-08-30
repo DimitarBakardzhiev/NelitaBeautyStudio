@@ -23,6 +23,8 @@
 
         IRepository<Service> Services { get; }
 
+        IRepository<News> News { get; }
+
         void Dispose();
 
         int SaveChanges();

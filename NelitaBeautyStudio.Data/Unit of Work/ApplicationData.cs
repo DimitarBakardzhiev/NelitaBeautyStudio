@@ -15,7 +15,12 @@
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public ApplicationData(DbContext context)
+        public ApplicationData()
+            : this(new ApplicationDbContext())
+        {
+        }
+
+        public ApplicationData(ApplicationDbContext context)
         {
             this.context = context;
         }
@@ -48,6 +53,11 @@
         public IRepository<Service> Services
         {
             get { return this.GetRepository<Service>(); }
+        }
+
+        public IRepository<News> News
+        {
+            get { return this.GetRepository<News>(); }
         }
 
         public DbContext Context

@@ -7,7 +7,7 @@
     using NelitaBeautyStudio.Data.Migrations;
     using NelitaBeautyStudio.Models;
 
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<User>, NelitaBeautyStudio.Data.IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -20,6 +20,8 @@
         public virtual IDbSet<PriceList> PriceLists { get; set; }
 
         public virtual IDbSet<Service> Services { get; set; }
+
+        public virtual IDbSet<News> News { get; set; }
 
         public static ApplicationDbContext Create()
         {

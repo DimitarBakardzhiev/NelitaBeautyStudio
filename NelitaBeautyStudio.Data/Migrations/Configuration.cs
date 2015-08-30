@@ -1,5 +1,6 @@
 namespace NelitaBeautyStudio.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -53,6 +54,33 @@ namespace NelitaBeautyStudio.Data.Migrations
 
                 manager.AddToRole(admin.Id, GlobalConstants.AdminRole);
             }
+
+            context.News.AddOrUpdate(
+                n => n.Title,
+                new News() 
+                { 
+                    Title = "asdwqefwew", 
+                    Content = "qwertyuiopolkjhgfdsazxcvbnm", 
+                    CreatedOn = new DateTime(2015, 08, 28, 12, 30, 0) 
+                },
+                new News() 
+                { 
+                    Title = "asdfaf", 
+                    Content = "arhrewjnsajhsdjcsjnajkanwaeceuaesuifaekjnakejnniuaesfiaeufie", 
+                    CreatedOn = new DateTime(2015, 08, 26, 16, 0, 0) 
+                },
+                new News()
+                {
+                    Title = "asgsht",
+                    Content = "aeijaiuaasefaefqwfthydyumdsrysfewiuqwieou289732acfiumiacwfeaweuiausiefaiweufy8q723y7axnifchicofhayi",
+                    CreatedOn = new DateTime(2015, 08, 15, 14, 0, 0)
+                },
+                new News()
+                {
+                    Title = "dfasjkds",
+                    Content = "afdslafseoijafseoijaewfoiupq3uq89aeoiaxfmioewjaojxeif",
+                    CreatedOn = new DateTime(2015, 08, 30, 10, 15, 0)
+                });
         }
     }
 }

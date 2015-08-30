@@ -44,7 +44,7 @@ else
 @if (User.IsInRole(GlobalConstants.AdminRole))
 {
     <div class="btn-group">
-        <a href="#" class="btn btn-default">Опции</a>
+        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Опции</a>
         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li>@Html.ActionLink("Добави нова услуга", "Create", "Service", new { priceListTitle = Model.Title }, null)</li>
