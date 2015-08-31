@@ -17,7 +17,9 @@ else
         @foreach (var news in firstThree)
 	    {
             <div class="col-md-4">
-                <h2>@news.Title</h2>
+                <h2>
+                    @Html.ActionLink(news.Title, "Details", "News", new { id = news.Id }, null)
+                </h2>
                 @{
                     var content = news.Content.Length > contentMaxLength ? (news.Content as string).Substring(0, contentMaxLength) + "..." : news.Content;
                 }
@@ -30,7 +32,9 @@ else
         @foreach (var news in secondThree)
         {
             <div class="col-md-4">
-                <h2>@news.Title</h2>
+                <h2>
+                    @Html.ActionLink(news.Title, "Details", "News", new { id = news.Id }, null)
+                </h2>
                 @{
                     var content = news.Content.Length > contentMaxLength ? (news.Content as string).Substring(0, contentMaxLength) + "..." : news.Content;
                 }

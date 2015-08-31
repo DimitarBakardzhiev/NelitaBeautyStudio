@@ -1,0 +1,60 @@
+﻿@using NelitaBeautyStudio.Models
+@model IEnumerable<News>
+@{
+    ViewBag.Title = "Новини";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новини</h2>
+
+@if (Model.Count() == 0)
+{
+    <h3>Няма въведени новини!</h3>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Заглавие</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var news in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(news.Title, "Details", "News", new { id = news.Id }, new { @class = "btn btn-link" })
+                    </td>
+                    <td>@news.CreatedOn.ToString("dd.MM.yyyyг. HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <ul class="pager">
+        @if ((int)this.ViewData["currentPage"] == 1)
+        {
+            <li class="previous disabled"><a href="#">← По-нови</a></li>
+        }
+        else
+        {
+            <li class="previous">
+                @Html.ActionLink("← По-нови", "Index", "News", new { page = (int)this.ViewData["currentPage"] - 1 }, null)
+            </li>
+        }
+        
+        @if ((int)this.ViewData["currentPage"] == (int)this.ViewData["pagesCount"])
+        {
+            <li class="next disabled"><a href="#">По-стари →</a></li>
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink("По-стари →", "Index", "News", new { page = (int)this.ViewData["currentPage"] + 1 }, null)
+            </li>
+        }
+        
+    </ul>
+}
