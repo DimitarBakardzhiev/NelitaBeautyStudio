@@ -4,8 +4,12 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using NelitaBeautyStudio.Common;
     using NelitaBeautyStudio.Data.Unit_of_Work;
+    using NelitaBeautyStudio.Models;
+    using NelitaBeautyStudio.Web.Infrastructure;
+    using NelitaBeautyStudio.Web.ViewModels;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class NewsController : BaseController
@@ -29,20 +33,11 @@
             return this.PartialView(latestNews);
         }
 
-        //[AllowAnonymous]
-        //public ActionResult Index()
-        //{
-        //    var allNews = this.Data.News.All().OrderByDescending(n => n.CreatedOn).ToList();
-        //    var latestTen = allNews.Take(GlobalConstants.NewsIndexPageSize);
-
-        //    return this.View(latestTen);
-        //}
-
         [AllowAnonymous]
         public ActionResult Index(int page = 1)
         {
             var allNews = this.Data.News.All().OrderByDescending(n => n.CreatedOn).ToList();
-            var currentPage = allNews.Skip((page - 1)* GlobalConstants.NewsIndexPageSize).Take(GlobalConstants.NewsIndexPageSize);
+            var currentPage = allNews.Skip((page - 1) * GlobalConstants.NewsIndexPageSize).Take(GlobalConstants.NewsIndexPageSize);
 
             this.ViewData["currentPage"] = page;
             var pagesCount = allNews.Count / GlobalConstants.NewsIndexPageSize;
@@ -55,6 +50,40 @@
             this.ViewData["pagesCount"] = pagesCount;
 
             return this.View(currentPage);
+        }
+
+        public ActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(NewsViewModel news)
+        {
+            if (ModelState.IsValid)
+            {
+                var newsModel = Mapper.Map<News>(news);
+                newsModel.CreatedOn = DateTime.Now;
+
+                this.Data.News.Add(newsModel);
+                this.Data.SaveChanges();
+
+                this.Notify(GlobalConstants.AddNews, NotificationType.success);
+
+                return this.RedirectToAction("Details", "News", new { id = newsModel.Id });
+            }
+
+            return this.View(news);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var news = this.Data.News.GetById(id);
+
+            return this.View("Details", news);
         }
     }
 }

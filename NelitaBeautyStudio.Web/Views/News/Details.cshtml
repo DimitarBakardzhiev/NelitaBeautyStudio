@@ -1,0 +1,30 @@
+﻿@using NelitaBeautyStudio.Models
+@model News
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/toastr")
+
+<div class="row">
+    <article>
+        <h2>@Model.Title</h2>
+        <p>
+            @Html.Raw(Model.Content)
+        </p>
+        <span>@Model.CreatedOn.ToString("dd.MM.yyyy г. HH:mm")</span>
+    </article>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var message = '@(TempData["message"])'
+
+        if (message) {
+            toastr['@(TempData["type"])'](message)
+        }
+        else { }
+    });
+</script>

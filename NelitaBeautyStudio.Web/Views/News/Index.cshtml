@@ -27,7 +27,7 @@ else
                     <td>
                         @Html.ActionLink(news.Title, "Details", "News", new { id = news.Id }, new { @class = "btn btn-link" })
                     </td>
-                    <td>@news.CreatedOn.ToString("dd.MM.yyyyг. HH:mm")</td>
+                    <td>@news.CreatedOn.ToString("dd.MM.yyyy г. HH:mm")</td>
                 </tr>
             }
         </tbody>

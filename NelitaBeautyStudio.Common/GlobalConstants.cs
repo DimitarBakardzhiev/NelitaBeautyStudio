@@ -20,6 +20,8 @@
         public const string EditService = "Услугата е рекатирана успешно!";
         public const string DeleteService = "Услугата е изтрита!";
 
+        public const string AddNews = "Успешно добавена новина!";
+
         public const int TextFieldLengthMax = 75;
         public const int TextFieldLengthMin = 6;
         public const int NewsIndexPageSize = 10;

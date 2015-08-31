@@ -12,7 +12,7 @@ else
             var firstThree = Model.Take(3);
             var secondThree = Model.Skip(3);
             
-            const int contentMaxLength = 50;
+            const int contentMaxLength = 30;
         }
         @foreach (var news in firstThree)
 	    {
@@ -24,7 +24,7 @@ else
                     var content = news.Content.Length > contentMaxLength ? (news.Content as string).Substring(0, contentMaxLength) + "..." : news.Content;
                 }
 
-                <p>@content</p>
+                <p>@Html.Raw(@content)</p>
             </div>
 	    }
     </div>
