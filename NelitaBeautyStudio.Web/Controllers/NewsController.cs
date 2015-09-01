@@ -85,5 +85,48 @@
 
             return this.View("Details", news);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var news = this.Data.News.GetById(id);
+            var newsViewModel = Mapper.Map<NewsViewModel>(news);
+
+            return this.View(newsViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, NewsViewModel news)
+        {
+            if (ModelState.IsValid)
+            {
+                var newsModel = this.Data.News.GetById(id);
+                newsModel.Title = news.Title;
+                newsModel.Content = news.Content;
+
+                this.Data.News.Update(newsModel);
+                this.Data.SaveChanges();
+
+                this.Notify(GlobalConstants.EditNews, NotificationType.info);
+
+                return this.RedirectToAction("Details", "News", new { id = id });
+            }
+
+            return this.View(news);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var news = this.Data.News.GetById(id);
+
+            this.Data.News.Delete(news);
+            this.Data.SaveChanges();
+
+            this.Notify(GlobalConstants.DeleteNews, NotificationType.warning);
+
+            return this.RedirectToAction("Index", "Home");
+        }
     }
 }

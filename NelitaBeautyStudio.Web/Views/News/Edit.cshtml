@@ -1,0 +1,34 @@
+﻿@using NelitaBeautyStudio.Web.ViewModels
+@model NewsViewModel
+@{
+    ViewBag.Title = "Редактиране на новина";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редактиране</h2>
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Edit", "News", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(n => n.Title, new { @class = "col-lg-2 control-label" })
+        @Html.EditorFor(n => n.Title)
+        @Html.ValidationMessageFor(n => n.Title, null, new { @class = "alert-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextAreaFor(n => n.Content, new { @class = "form-control", id = "news-content" })
+        @Html.ValidationMessageFor(n => n.Content, null, new { @class = "alert-danger" })
+    </div>
+
+    <input type="submit" value="Редактирай" class="btn btn-warning" />
+}
+
+<script>CKEDITOR.replace('news-content');</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,4 +1,6 @@
 ﻿@using NelitaBeautyStudio.Models
+@using NelitaBeautyStudio.Common
+
 @model News
 @{
     ViewBag.Title = Model.Title;
@@ -16,8 +18,21 @@
         </p>
         <span>@Model.CreatedOn.ToString("dd.MM.yyyy г. HH:mm")</span>
     </article>
+    @if (User.IsInRole(GlobalConstants.AdminRole))
+    {
+        @Html.ActionLink("Редактиране", "Edit", "News", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
+        <br /><br />
+        
+        using (Html.BeginForm("Delete", "News", new { id = Model.Id }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" value="Изтриване" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+        }
+    }
 </div>
 
+<script src="~/Scripts/confirmDelete.js"></script>
 <script>
     $(document).ready(function () {
         var message = '@(TempData["message"])'

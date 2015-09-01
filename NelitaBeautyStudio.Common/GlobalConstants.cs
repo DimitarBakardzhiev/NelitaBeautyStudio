@@ -21,6 +21,8 @@
         public const string DeleteService = "Услугата е изтрита!";
 
         public const string AddNews = "Успешно добавена новина!";
+        public const string EditNews = "Новината е редактирана успешно!";
+        public const string DeleteNews = "Новината е изтрита!";
 
         public const int TextFieldLengthMax = 75;
         public const int TextFieldLengthMin = 6;
