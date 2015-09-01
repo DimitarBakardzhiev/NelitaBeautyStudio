@@ -27,7 +27,7 @@
                 .ThenBy(c => c.Type)
                 .ToList();
 
-            return this.View(contacts);
+            return this.View("Index", contacts);
         }
 
         public ActionResult Create()
