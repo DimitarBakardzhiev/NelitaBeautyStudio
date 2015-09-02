@@ -35,9 +35,7 @@ namespace NelitaBeautyStudio.Data.Migrations
                 c => c.Type,
                 new Contact { Type = "Нели - фризьор", Value = "0898 911 870", Priority = Priority.High },
                 new Contact { Type = "Радо - фризьор", Value = "0988 830 711", Priority = Priority.High },
-                new Contact { Type = "Мъри - маникюрист и педикюрист", Value = "0877 802 323", Priority = Priority.Normal },
-                new Contact { Type = "Изабел - козметика и масажи", Value = "0889 471 288", Priority = Priority.Low },
-                new Contact { Type = "Лили - масажи", Value = "0878 705 186", Priority = Priority.Low });
+                new Contact { Type = "Мъри - маникюрист и педикюрист", Value = "0877 802 323", Priority = Priority.Normal });
 
             context.Roles.AddOrUpdate(
                 r => r.Name,
