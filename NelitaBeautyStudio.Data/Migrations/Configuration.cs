@@ -31,12 +31,30 @@ namespace NelitaBeautyStudio.Data.Migrations
             ////      new Person { FullName = "Rowan Miller" }
             ////    );
 
+            if (context.Contacts.Count() == 0)
+            {
+                this.SeedContacts(context);
+            }
+
+            this.SeedAdmin(context);
+
+            if (context.News.Count() == 0)
+            {
+                this.SeedNews(context);
+            }
+        }
+
+        private void SeedContacts(ApplicationDbContext context)
+        {
             context.Contacts.AddOrUpdate(
                 c => c.Type,
                 new Contact { Type = "Нели - фризьор", Value = "0898 911 870", Priority = Priority.High },
                 new Contact { Type = "Радо - фризьор", Value = "0988 830 711", Priority = Priority.High },
                 new Contact { Type = "Мъри - маникюрист и педикюрист", Value = "0877 802 323", Priority = Priority.Normal });
+        }
 
+        private void SeedAdmin(ApplicationDbContext context)
+        {
             context.Roles.AddOrUpdate(
                 r => r.Name,
                 new IdentityRole { Name = GlobalConstants.AdminRole });
@@ -52,20 +70,23 @@ namespace NelitaBeautyStudio.Data.Migrations
 
                 manager.AddToRole(admin.Id, GlobalConstants.AdminRole);
             }
+        }
 
+        private void SeedNews(ApplicationDbContext context)
+        {
             context.News.AddOrUpdate(
                 n => n.Title,
-                new News() 
-                { 
-                    Title = "asdwqefwew", 
-                    Content = "qwertyuiopolkjhgfdsazxcvbnm", 
-                    CreatedOn = new DateTime(2015, 08, 28, 12, 30, 0) 
+                new News()
+                {
+                    Title = "asdwqefwew",
+                    Content = "qwertyuiopolkjhgfdsazxcvbnm",
+                    CreatedOn = new DateTime(2015, 08, 28, 12, 30, 0)
                 },
-                new News() 
-                { 
-                    Title = "asdfaf", 
-                    Content = "arhrewjnsajhsdjcsjnajkanwaeceuaesuifaekjnakejnniuaesfiaeufie", 
-                    CreatedOn = new DateTime(2015, 08, 26, 16, 0, 0) 
+                new News()
+                {
+                    Title = "asdfaf",
+                    Content = "arhrewjnsajhsdjcsjnajkanwaeceuaesuifaekjnakejnniuaesfiaeufie",
+                    CreatedOn = new DateTime(2015, 08, 26, 16, 0, 0)
                 },
                 new News()
                 {

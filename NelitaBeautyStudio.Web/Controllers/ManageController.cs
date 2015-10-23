@@ -5,6 +5,10 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Common;
+
+    using Infrastructure;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
@@ -267,6 +271,10 @@
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
 
+                this.TempData["message"] = GlobalConstants.ChangedPassword;
+                this.TempData["type"] = NotificationType.success.ToString();
+
+                return this.RedirectToAction("Index", "Home");
                 return this.RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
 

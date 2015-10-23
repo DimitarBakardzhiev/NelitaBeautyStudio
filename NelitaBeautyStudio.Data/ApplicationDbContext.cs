@@ -7,7 +7,7 @@
     using NelitaBeautyStudio.Data.Migrations;
     using NelitaBeautyStudio.Models;
 
-    public class ApplicationDbContext : IdentityDbContext<User>, NelitaBeautyStudio.Data.IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

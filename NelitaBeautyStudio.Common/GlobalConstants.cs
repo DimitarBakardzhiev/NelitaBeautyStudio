@@ -24,6 +24,8 @@
         public const string EditNews = "Новината е редактирана успешно!";
         public const string DeleteNews = "Новината е изтрита!";
 
+        public const string ChangedPassword = "Паролата е сменена!";
+
         public const int TextFieldLengthMax = 75;
         public const int TextFieldLengthMin = 6;
         public const int NewsIndexPageSize = 10;

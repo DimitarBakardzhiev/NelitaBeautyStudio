@@ -14,43 +14,48 @@
 }
 else
 {
-    <table class="table table-striped table-hover">
-        <tbody>
-            @foreach (var contact in Model)
-            {
-                <tr>
-                    <td>@contact.Type</td>
-                    <td>@contact.Value</td>
+    <div class="row">
+        <div class="col-md-7">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    @foreach (var contact in Model)
+                    {
+                        <tr>
+                            <td>@contact.Type</td>
+                            <td>@contact.Value</td>
 
-                    @if (User.IsInRole(GlobalConstants.AdminRole))
-	                {
-		                <td>@Html.ActionLink("Редактиране", "Edit", new { id = contact.Id }, new { @class = "btn btn-warning btn-xs" })</td>
-                        <td>
-                            @using (Html.BeginForm("Delete", "Contacts", new { id = contact.Id }, FormMethod.Post))
+                            @if (User.IsInRole(GlobalConstants.AdminRole))
                             {
-                                @Html.AntiForgeryToken()
-                                
-                                <input type="submit" value="Изтриване" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+                                <td>@Html.ActionLink("Редактиране", "Edit", new { id = contact.Id }, new { @class = "btn btn-warning btn-xs" })</td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Contacts", new { id = contact.Id }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="submit" value="Изтриване" class="btn btn-danger btn-xs" onclick="confirmDelete()" />
+                                    }
+                                </td>
                             }
-                        </td>
-	                }
-                </tr>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (User.IsInRole(GlobalConstants.AdminRole))
+            {
+                @Html.ActionLink("Добавяне", "Create", null, new { @class = "btn btn-primary" })
             }
-        </tbody>
-    </table>
 
-    if (User.IsInRole(GlobalConstants.AdminRole))
-    {    
-        @Html.ActionLink("Добавяне", "Create", null, new { @class = "btn btn-primary" })
-    }
+            <br /><br />
+            <div class="text-center">
+                <iframe width="600" height="300" frameborder="0" scrolling="no" src="http://www.bgmaps.com/link/map/A350E862486B98B287CDB369D1CB93B2"></iframe>
+            </div>
+        </div>
 
-
-    @*<div class="text-center col-md-4" style=" width 600px"><iframe width="600" height="300" src="http://regiohelden.de/google-maps/map_en.php?width=600&amp;height=300&amp;hl=en&amp;q=%D0%A1%D0%BE%D1%84%D0%B8%D1%8F%2C%20%D0%B1%D1%83%D0%BB.%20%D0%A2%D0%BE%D1%82%D0%BB%D0%B5%D0%B1%D0%B5%D0%BD%2031+(%D0%A1%D0%B0%D0%BB%D0%BE%D0%BD%20%D0%B7%D0%B0%20%D0%BA%D1%80%D0%B0%D1%81%D0%BE%D1%82%D0%B0%20%22%D0%9D%D0%B5%D0%BB%D0%B8%D1%82%D0%B0%22)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="http://www.regiohelden.de/google-maps/">Google Maps Generator</a> von <a href="http://www.regiohelden.de/">RegioHelden</a></iframe><br /><span style="font-size: 9px;"><a href="http://www.regiohelden.de/google-maps/" style="font-size: 9px;">Google Maps Generator</a> by <a href="http://www.regiohelden.de/" style="font-size: 9px;">RegioHelden</a></span></div>*@
-    <div class="text-center">
-        <iframe width="600" height="300" frameborder="0" scrolling="no" src="http://www.bgmaps.com/link/map/A350E862486B98B287CDB369D1CB93B2"></iframe>
+        <div class="col-md-5">
+            <img src="~/Content/images/IMG_20151016_124612.jpg" class="fit-picture" alt="Салон за красота Нелита" />
+        </div>
     </div>
-
-
 
     if (User.IsInRole(GlobalConstants.AdminRole))
     {
